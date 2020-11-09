@@ -18,7 +18,7 @@ public class NutritionController {
   private NutritionService nutritionService;
   
   @GetMapping("/get/nutrition")
-  public NutritionInformation getNutriontInformationByname
+  public NutritionInformation getNutritionInformationByName
           (@RequestParam(value = "foodName") String foodName ) {
     return nutritionService.getNutritionInformation(foodName);
   }
