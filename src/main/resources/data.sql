@@ -1,0 +1,10 @@
+insert into app_user values(101, '65520549-b4e8-4757-862a-9b0969235df4', 'Yolando Rempel', TO_DATE('17/10/2020', 'DD/MM/YYYY'), 55.8);
+insert into app_user values(102, '6d1ccd20-849e-49d8-b507-ea87d721ddea', 'Sharri O Kon', TO_DATE('01/09/2020', 'DD/MM/YYYY'), 50.0);
+insert into app_user values(103, '5b107c43-2963-458c-b787-64dec501c710', 'Ellamae Schaefer', TO_DATE('15/05/2020', 'DD/MM/YYYY'), 61.9);
+insert into app_user values(104, 'c1957939-2040-4ccc-8ee0-f07ff46064c2', 'Elenore Legros', TO_DATE('30/09/2020', 'DD/MM/YYYY'), 60.0);
+insert into app_user values(105, 'f7efc381-b774-4548-beb8-f4e030313860', 'Jerry Kassulke', TO_DATE('17/08/2020', 'DD/MM/YYYY'), 48.0);
+insert into app_user values(106, '65ec9a3f-60d4-4a85-8426-42c1a9844055', 'Ayanna Hauck', TO_DATE('15/03/2020', 'DD/MM/YYYY'), 68.9);
+insert into app_user values(107, '15fe27c1-bf9d-4dc7-9301-a70587fb0f60', 'Cari Terry', TO_DATE('06/04/2020', 'DD/MM/YYYY'), 72.7);
+insert into app_user values(108, 'fdc80014-b223-433e-aca6-108b10d8251d', 'Gwyneth Keeling', TO_DATE('15/06/2020', 'DD/MM/YYYY'), 50.0);
+insert into app_user values(109, '78481466-85cc-419f-bc28-1521d1bdd4e2', 'Dania Pfeffer', TO_DATE('10/06/2020', 'DD/MM/YYYY'), 68.9);
+insert into app_user values(110, '39bea948-e6c2-41e5-a0a1-f67c77efe5c2', 'Marge Flatley', TO_DATE('19/07/2020', 'DD/MM/YYYY'), 62.9);

@@ -18,8 +18,8 @@ public class FHIRController {
   private FhirService fhirService;
   
   @GetMapping("/get/patient")
-  public User getIDByPatientName(@RequestParam(value = "name") String name) {
-    return fhirService.getIDByPatientName(name);
+  public User getPatientDetailsById(@RequestParam(value = "name") String name) {
+    return fhirService.getPatientDetailsById(name);
   }
   
 }

@@ -7,10 +7,12 @@ import com.ihi.pregnancytracker.beans.NutritionInformation;
 import com.ihi.pregnancytracker.service.NutritionService;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import org.hl7.fhir.dstu3.model.Bundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 @Service
 public class NutritionServiceImpl implements NutritionService {
 
