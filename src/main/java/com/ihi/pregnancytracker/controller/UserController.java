@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,8 +33,8 @@ public class UserController {
   @Autowired
   private UserRepository userRepository;
 
-  @GetMapping("/loginuser")
-  public List<AppUser> allCourses(){
+  @GetMapping("/loginusers")
+  public List<AppUser> getUsers(){
 
     Iterable<AppUser> i=userRepository.findAll();
     List<AppUser> c= new ArrayList<>();
@@ -43,5 +44,18 @@ public class UserController {
       c.add(cn);
     }
     return c;
+  }
+  @GetMapping("/loginuser")
+  public AppUser getUser(@RequestParam(value = "fhirID") String fhirId){
+
+    AppUser i=userRepository.findAppUserByFhirID(fhirId);
+    return i;
+  }
+  @Transactional
+  @GetMapping("/updatecalories")
+  public int updateCal(@RequestParam(value = "fhirID") String fhirId, @RequestParam(value = "new_calorie") float value){
+
+    int i=userRepository.updateCalorie(fhirId,value);
+    return i;
   }
 }
