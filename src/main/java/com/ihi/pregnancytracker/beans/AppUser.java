@@ -19,5 +19,13 @@ public class AppUser {
     private String name;
     private Date pregnancyStartDate;
     private float prepregnacyWeight;
+    private float prepregnacyBMI;
+    private float c_d1;
+    private float c_d2;
+    private float c_d3;
+    private float c_d4;
+    private float c_d5;
+    private float c_d6;
+    private float c_d7;
 
 }
