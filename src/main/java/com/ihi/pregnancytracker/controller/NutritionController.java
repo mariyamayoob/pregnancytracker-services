@@ -1,5 +1,7 @@
 package com.ihi.pregnancytracker.controller;
 
+import com.ihi.pregnancytracker.beans.Fields;
+import com.ihi.pregnancytracker.beans.Hits;
 import com.ihi.pregnancytracker.beans.NutritionInformation;
 import com.ihi.pregnancytracker.service.NutritionService;
 import org.slf4j.Logger;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
@@ -20,9 +25,15 @@ public class NutritionController {
   private NutritionService nutritionService;
   
   @GetMapping("/get/nutrition")
-  public NutritionInformation getNutritionInformationByName
+  public List<Fields> getNutritionInformationByName
           (@RequestParam(value = "foodName") String foodName ) {
-    return nutritionService.getNutritionInformation(foodName);
+    NutritionInformation nutritionInformation=nutritionService.getNutritionInformation(foodName);
+    List<Fields> fieldsList = new ArrayList<>();
+    for(Hits hits:nutritionInformation.getHits() ){
+      fieldsList.add(hits.getFields());
+
+    };
+    return  fieldsList;
   }
   
 }
