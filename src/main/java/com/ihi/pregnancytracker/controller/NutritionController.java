@@ -35,7 +35,7 @@ public class NutritionController {
       for(int j =0; j<food.getFoodNutrients().size();j++) {
         FoodNutrients nut = food.getFoodNutrients().get(j);
         if(nut.getValue()>0){
-          nutStList.add(nut.getNutrientName() + " :" + nut.getValue()+" "+nut.getUnitName()+"<br/>");
+          nutStList.add("<br/>"+nut.getNutrientName() + " :" + nut.getValue()+" "+nut.getUnitName());
 
         }
 
