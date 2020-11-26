@@ -63,14 +63,24 @@ public class UserController {
   }
 
   @Transactional
+  @GetMapping("/updateUserVal")
+  public int updateCalAndAct(@RequestParam(value = "fhirID") String fhirId, @RequestParam(value = "new_calorie") float cal, @RequestParam(value = "new_activity") float activity){
+    LocalDate date = LocalDate.now();
+    int i=userRepository.updateUserVal(fhirId,cal, activity, date);
+    return i;
+  }
+
+  @Transactional
   @GetMapping("/createuser")
-  public AppUser createUser(@RequestParam(value = "fhirID") String fhirId, @RequestParam(value = "name") String name, @RequestParam(value = "pregnancy_start_dt")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date, @RequestParam(value = "prepregweight") float prepregweight, @RequestParam(value = "new_calorie") float value){
+  public AppUser createUser(@RequestParam(value = "fhirID") String fhirId, @RequestParam(value = "name") String name, @RequestParam(value = "pregnancy_start_dt")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate date, @RequestParam(value = "prepregweight") float prepregweight, @RequestParam(value = "new_calorie") float cal, @RequestParam(value = "new_activity") float activity){
     AppUser appUser = new AppUser();
     appUser.setFhirID(fhirId);
     appUser.setName(name);
-    appUser.setC_d1(value);
+    appUser.setC_d1(cal);
+    appUser.setA_d1(activity);
     appUser.setPregnancyStartDate(date);
     appUser.setPrepregnacyWeight(prepregweight);
+    appUser.setLastUpdateDate(LocalDate.now());
     userRepository.save(appUser);
 
     return getUser(fhirId);
