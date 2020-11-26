@@ -11,6 +11,6 @@ import java.util.List;
 @ToString
 
 public class NutritionInformation {
-    private List<Hits> hits;
+    private List<Food> foods;
 
 }
