@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -50,8 +52,12 @@ public class UserController {
   }
   @GetMapping("/loginuser")
   public AppUser getUser(@RequestParam(value = "fhirID") String fhirId){
-
-    return userRepository.findAppUserByFhirID(fhirId);
+    AppUser appUser = userRepository.findAppUserByFhirID(fhirId);
+    ZoneId easternTime = ZoneId.of("America/Montreal");
+    LocalDate newDate = LocalDate.now(easternTime);
+    LocalDate dbDate = appUser.getLastUpdateDate();
+    appUser.setUpdatedToday(newDate.isEqual(dbDate));
+    return appUser;
 
   }
   @Transactional
@@ -59,6 +65,7 @@ public class UserController {
   public int updateCal(@RequestParam(value = "fhirID") String fhirId, @RequestParam(value = "new_calorie") float value){
 
     int i=userRepository.updateCalorie(fhirId,value);
+
     return i;
   }
 
@@ -80,7 +87,10 @@ public class UserController {
     appUser.setA_d1(activity);
     appUser.setPregnancyStartDate(date);
     appUser.setPrepregnacyWeight(prepregweight);
-    appUser.setLastUpdateDate(LocalDate.now());
+
+    ZoneId easternTime = ZoneId.of("America/Montreal");
+
+    appUser.setLastUpdateDate(LocalDate.now(easternTime));
     userRepository.save(appUser);
 
     return getUser(fhirId);

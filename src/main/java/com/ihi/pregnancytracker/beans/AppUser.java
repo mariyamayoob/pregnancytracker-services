@@ -35,5 +35,7 @@ public class AppUser {
     private float a_d6;
     private float a_d7;
     private LocalDate lastUpdateDate;
+    @Transient
+    private boolean isUpdatedToday;
 
 }
