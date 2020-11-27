@@ -55,8 +55,10 @@ public class UserController {
     AppUser appUser = userRepository.findAppUserByFhirID(fhirId);
     ZoneId easternTime = ZoneId.of("America/Montreal");
     LocalDate newDate = LocalDate.now(easternTime);
-    LocalDate dbDate = appUser.getLastUpdateDate();
-    appUser.setUpdatedToday(newDate.isEqual(dbDate));
+    if(appUser!=null && appUser.getLastUpdateDate()!=null) {
+      LocalDate dbDate = appUser.getLastUpdateDate();
+      appUser.setUpdatedToday(newDate.isEqual(dbDate));
+    }
     return appUser;
 
   }
